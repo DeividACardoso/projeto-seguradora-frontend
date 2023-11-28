@@ -1,1 +1,101 @@
-<p>clientes-listagem works!</p>
+<div class="has-bg-img">
+  <div class="bg-img bg-cover img-fluid" style="background-image: url('https://i.imgur.com/WFbPLt7.jpeg'); height: 100vh;">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 pt-2">
+        <div class="card bg-dark border border-secondary">
+          <div class="card-header bg-dark text-white">
+            <h5>Filtros</h5>
+          </div>
+          <div class="card-body card-info">
+            <form class="row align-items-start">
+              <!-- <div class="form-group col col-md-4">
+                <label for="nome" class="text-white">Nome</label>
+                <input class="form-control" name="nome" [(ngModel)]="seletor.nome">
+              </div>
+              <div class="form-group col col-md-4">
+                <label for="nomeFabricante" class="text-white">Nome do Fabricante</label>
+                <input class="form-control" name="nomeFabricante" [(ngModel)]="seletor.fabricanteNome">
+              </div>
+              <div class="form-group col col-md-4">
+                <label for="nomeFabricante" class="text-white">CNPJ do Fabricante</label>
+                <input class="form-control" name="nomeFabricante" [(ngModel)]="seletor.fabricanteCnpj">
+              </div>
+              <div class="form-group col col-md-3">
+                <label for="pesoMinimo" class="text-white">Peso Minimo(Kg)</label>
+                <input class="form-control" name="pesoMinimo" [(ngModel)]="seletor.pesoMinimo">
+              </div>
+              <div class="form-group col col-md-3">
+                <label for="pesoMaximo" class="text-white">Peso Maximo(Kg)</label>
+                <input class="form-control" name="pesoMaximo" [(ngModel)]="seletor.pesoMaximo">
+              </div>
+              <div class="form-group col col-md-3">
+                <label for="valorMinimo" class="text-white">Valor Minimo(R$)</label>
+                <input class="form-control" name="valorMinimo" [(ngModel)]="seletor.valorMinimo">
+              </div>
+              <div class="form-group col col-md-3">
+                <label for="valorMaximo" class="text-white">Valor Maximo(R$)</label>
+                <input class="form-control" name="valorMaximo" [(ngModel)]="seletor.valorMaximo">
+              </div>
+              <div class="form-group col col-md-3">
+                <label for="dataCadastro" class="text-white">Data minima de cadastro</label>
+                  <input class="form-control" type="date" name="dataCadastroInicial" [(ngModel)]="seletor.dataCadastroInicial">
+              </div>
+              <div class="form-group col col-md-3">
+                <label for="dataCadastro" class="text-white">Data maxima de cadastro</label>
+                  <input class="form-control" type="date" name="dataCadastroFinal"  [(ngModel)]="seletor.dataCadastroFinal">
+              </div>
+              <div class="form-group col pt-4 col-md-3">
+                <button type="sumbit" class="form-control btn btn-warning mb-3" (click)="limpar()">Limpar</button>
+              </div>
+              <div class="form-group col pt-4 col-md-3">
+                <button type="sumbit" class="form-control btn btn-primary mb-3" (click)="pesquisar()">Pesquisar</button>
+              </div>
+              <br> -->
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="row">
+    <div class="col-sm-12 pt-2">
+      <div class="card bg-dark border border-secondary">
+        <div class="card-header ">
+          <h3 class="text-white">Lista de Clientes</h3>
+        </div>
+        <div class="card-body ">
+          <div class="table-responsive">
+            <div class="table-responsive">
+                <table class="table table-responsive table-striped table-dark table-hover text-white">
+                    <thead>
+                      <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col" class="text-center">Nome</th>
+                        <th scope="col" class="text-center">CPF</th>
+                        <th scope="col" class="text-center">Data de Nascimento</th>
+                        <!-- https://getbootstrap.com/docs/5.3/utilities/text/ -->
+                        <th class="text-center">Ações</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let c of clientes">
+                        <td>{{c.id}}</td>
+                        <td class="text-center">{{c.nome}}</td>
+                        <td class="text-center">{{c.cpf | cpf}}</td>
+                        <td class="text-center">{{c.dataNascimento | date: 'dd/MM/yyyy'}}</td>
+                        <!-- <td class="text-center">
+                          <button class="btn btn-xs btn-secondary mr-12" (click)="editar(p.id)">Editar</button>
+                          &nbsp;
+                          <button class="btn btn-xs btn-danger" (click)="excluir(p.id)">Excluir</button>
+                        </td> -->
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

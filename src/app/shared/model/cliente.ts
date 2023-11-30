@@ -6,5 +6,5 @@ export class Cliente{
   cpf: string;
   dataNascimento: Date;
   telefone: string;
-  endereco: Endereco;
+  endereco: Endereco = new Endereco();
 }

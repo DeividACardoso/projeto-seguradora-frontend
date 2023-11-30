@@ -5,7 +5,7 @@ import { Cliente } from 'src/app/shared/model/cliente';
 import { ClienteService } from 'src/app/shared/service/cliente.service';
 import { Endereco } from 'src/app/shared/model/endereco'
 import { EnderecoService } from 'src/app/shared/service/endereco.service'
-import swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-clientes-detalhe',
@@ -16,24 +16,24 @@ export class ClientesDetalheComponent implements OnInit{
   public enderecos:Endereco[] = []
   public cliente:Cliente = new Cliente();
   public idCliente: number;
-  
+
   @ViewChild('ngForm')
   public ngForm: NgForm;
-  enderecoService: any;
 
   constructor(private clienteService : ClienteService,
+              private enderecoService: EnderecoService,
               private router: Router,
               private route: ActivatedRoute) {}
 
               ngOnInit(): void {
                 this.route.params.subscribe(params => {
                   this.idCliente = params['id']; //'id' é o nome do parâmetro definido na rota
-            
+
                   if(this.idCliente){
                     this.buscarCliente();
                   }
                 });
-            
+
                 this.enderecoService.listarTodos().subscribe(
                   (                  resultado: Endereco[]) => {
                     this.enderecos = resultado;
@@ -47,15 +47,51 @@ export class ClientesDetalheComponent implements OnInit{
     this.clienteService.pesquisarPorId(this.cliente.id).subscribe(
       resultado =>{
         this.cliente = resultado;
-      }, 
+      },
       erro =>{
-        swal.fire('Erro', 'Erro ao buscar cliente com ID (' + this.idCliente + ') : ', 'error');
+        Swal.fire('Erro', 'Erro ao buscar cliente com ID (' + this.idCliente + ') : ', 'error');
         return;
       }
     )
   }
-  
-  
+
+public salvar(form: NgForm){
+  if(form.invalid){
+    Swal.fire("Erro", "Formulário inválido", 'error');
+  }
+
+  if(this.idCliente){
+    this.atualizar();
+  } else {
+    this.inserirCliente();
+  }
+}
+  inserirCliente() {
+    this.clienteService.salvar(this.cliente).subscribe(
+      sucesso => {
+        Swal.fire("Sucesso", "Cliente salvo com sucesso", 'success');
+        this.cliente = new Cliente();
+      },
+      erro => {
+        Swal.fire("Erro", "Não foi possivel salvar o cliente: " + erro, 'error');
+      }
+    )
+  }
+  atualizar() {
+    this.clienteService.atualizar(this.cliente).subscribe(
+      sucesso => {
+        Swal.fire("Sucesso", "Cliente Atualizado com Sucesso!", 'success');
+      },
+      erro => {
+        Swal.fire("Erro", "Não foi possivel atualizar o Cliente", 'error');
+      }
+    )
+  }
+
+public voltar(){
+  this.router.navigate(['/clientes/lista'])
+}
+
 public compareById(r1: any, r2: any): boolean{
   return r1 && r2 ? r1.id === r2.id : r1 === r2;
 }

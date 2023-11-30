@@ -1,4 +1,4 @@
-import { endereco } from './endereco';
+import { Endereco } from './endereco';
 
 export class Cliente{
   id: number;
@@ -6,5 +6,5 @@ export class Cliente{
   cpf: string;
   dataNascimento: Date;
   telefone: string;
-  endereco: endereco;
+  endereco: Endereco;
 }

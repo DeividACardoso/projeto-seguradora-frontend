@@ -1,1 +1,68 @@
-<p>clientes-detalhe works!</p>
+<div class="has-bg-img">
+    <div class="bg-img bg-cover img-fluid" style="background-image: url('https://i.imgur.com/WFbPLt7.jpeg'); height: 100vh;">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 pt-2">
+            <div class="card bg-dark border border-secondary">
+              <div class="card-header bg-dark text-white">
+                <h5>Cadastro</h5>
+              </div>
+              <div class="card-body card-info">
+                <form class="was-validated" #ngForm="ngForm">
+                  <div class="row">
+                    <div class="form-group col col-md-6">
+                      <label for="nome" class="text-white">Nome</label>
+                      <input class="form-control" name="nome" [(ngModel)]="cliente.nome" required>
+                      <div class="invalid-feedback">Campo obrigatório</div>
+                    </div>
+                    <div class="form-group col col-md-6">
+                      <label for="nomeFabricante" class="text-white">Fabricante</label>
+                      <select class="form-select" name="fabricanteDoProduto"
+                          [ngModelOptions]="{standalone: true}"
+                          aria-label="Selecione um fabricante"
+                          [compareWith]="compareById"
+                          [(ngModel)]="cliente.endereco"
+                          required>
+                          <option *ngFor="let endereco of enderecos"
+                          [ngValue]="endereco">{{endereco.cep}}</option>
+                      </select>
+                    </div>
+                    <div class="form-group col col-md-4">
+                      <label for="peso" class="text-white">Peso(Kg)</label>
+                      <input class="form-control" type="number" name="peso" min="0.1" step="0.1"
+                      [(ngModel)]="cliente.nome" required>
+                      <div class="invalid-feedback">Insira um valor maior que zero</div>
+                    </div>
+                    <div class="form-group col col-md-4">
+                      <label for="valor" class="text-white">Valor(R$)</label>
+                      <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">R$</div>
+                        </div>
+                        <input type="number" class="form-control" name="valor" placeholder="Valor de venda de produto" min="0.5" [(ngModel)]="cliente.telefone" required>
+                        <div class="invalid-feedback">Insira um valor maior que zero</div>
+                      </div>
+                    </div>
+                    <div class="form-group col col-md-4">
+                      <label for="dataCadastro" class="text-white">Data de cadastro</label>
+                      <input class="form-control" type="date" name="dataCadastro"[(ngModel)]="cliente.dataNascimento" required>
+                      <div class="invalid-feedback">Campo obrigatório</div>
+                    </div>
+                  </div>
+                </form>
+                <div class="row">
+                  <div class="col-md-2"></div>
+                  <!-- <div class="form-group col-md-4">
+                    <button type="sumbit" class="form-control btn btn-warning" (click)="voltar()">Voltar</button>
+                  </div>
+                  <div class="form-group col-md-4 ">
+                    <button type="sumbit" class="form-control btn btn-primary" (click)="salvar(ngForm)">Cadastrar</button>
+                  </div> -->
+                  <div class="col-md-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

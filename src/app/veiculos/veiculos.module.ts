@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { VeiculosRoutingModule } from './veiculos-routing.module';
 import { VeiculosDetalheComponent } from './veiculos-detalhe/veiculos-detalhe.component';
 import { VeiculosListagemComponent } from './veiculos-listagem/veiculos-listagem.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { VeiculosListagemComponent } from './veiculos-listagem/veiculos-listagem
   ],
   imports: [
     CommonModule,
+    FormsModule,
     VeiculosRoutingModule
   ]
 })

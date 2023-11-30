@@ -15,9 +15,11 @@ export class ClienteService{
   listarTodos(): Observable<Array<Cliente>>{
     return this.httpClient.get<Array<Cliente>>(this.API+'/todos');
   }
+
   pesquisarPorId(id: number){
     return this.httpClient.get<Cliente>(this.API+'/'+id)
   }
+
   listarComFiltro(seletor: ClienteSeletor): Observable<Array<Cliente>>{
     return this.httpClient.post<Array<Cliente>>(this.API+'/filtro', seletor);
   }
@@ -25,7 +27,6 @@ export class ClienteService{
   salvar(cliente: Cliente): Observable<Cliente>{
     return this.httpClient.post<Cliente>(this.API, cliente);
   }
-
 
   atualizar(cliente : Cliente): Observable<Cliente>{
     return this.httpClient.post<Cliente>(this.API, cliente);

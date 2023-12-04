@@ -30,7 +30,7 @@ export class ClientesListagemComponent implements OnInit{
     },
     erro =>{
       console.log('Erro ao buscar clientes com filtro', erro);
-    }
+      }
     )
   }
 

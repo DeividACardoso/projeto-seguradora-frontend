@@ -34,6 +34,14 @@ export class ClientesListagemComponent implements OnInit{
     )
   }
 
+  editar(id: number){
+    this.router.navigate(['clientes/detalhe', id])
+  }
+
+  inspecionar(){
+    //TODO - Tela de inspeção de usuário.
+  }
+
   buscarClientes() {
     this.ClienteService.listarTodos().subscribe(
       resultado => {

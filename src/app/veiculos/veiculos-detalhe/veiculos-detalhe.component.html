@@ -1,1 +1,67 @@
-<p>veiculos-detalhe works!</p>
+<div class="bg-light" style="height: 100vh">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 pt-2">
+        <!-- <div class="card border border-dark">
+          <div class="card-header bg-primary text-white">
+            <h5>Cadastro</h5>
+          </div> -->
+          <div class="card-body card-info">
+            <form #ngForm="ngForm">
+              <div class="row align-items-start">
+                <div class="col col-md-1"></div>
+                <div class="form-group col col-md-5">
+                  <label for="nome">Marca</label>
+                  <input [ngClass]="((!veiculo.marca || (veiculo.marca && veiculo.marca.length < 3)) && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'"
+                         [(ngModel)]="veiculo.marca" class="shadow-sm rounded-0" minlength="3" name="marca" required>
+                  <div class="invalid-feedback">Informe a marca</div>
+                </div>
+                <div class="form-group col col-md-5">
+                  <label for="nome">Modelo</label>
+                  <input [ngClass]="((!veiculo.modelo || (veiculo.modelo && veiculo.modelo.length < 3)) && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'"
+                         [(ngModel)]="veiculo.modelo" class="shadow-sm rounded-0" minlength="3" name="modelo" required>
+                  <div class="invalid-feedback">Informe o modelo</div>
+                </div>
+                <div class="col col-md-1"></div>
+                <div class="col col-md-1"></div>
+                <div class="form-group col col-md-5">
+                  <label for="nome">Combustível</label>
+                  <input [ngClass]="((!veiculo.combustivel || (veiculo.combustivel && veiculo.combustivel.length < 3)) && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'"
+                         [(ngModel)]="veiculo.combustivel" class="shadow-sm rounded-0" minlength="3" name="combustivel" required>
+                  <div class="invalid-feedback">Informe o tipo de combustível</div>
+                </div>
+                <div class="form-group col col-md-5">
+                  <label for="nome">Placa Veículo</label>
+                  <input [ngClass]="((!veiculo.placaVeiculo || (veiculo.placaVeiculo && veiculo.placaVeiculo.length < 3)) && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'"
+                         [(ngModel)]="veiculo.placaVeiculo" class="shadow-sm rounded-0" minlength="3" name="placaVeiculo" required>
+                  <div class="invalid-feedback">Informe a placa do veículo</div>
+                </div>
+                <div class="col col-md-1"></div>
+                <div class="col col-md-1"></div>
+                  <div class="form-group col col-md-5">
+                    <label for="nome">Ano modelo</label>
+                    <input [ngClass]="(!veiculo.anoModelo || (veiculo.anoModelo && ngForm.submitted)) ? 'form-control is-invalid' : 'form-control'"
+                           [(ngModel)]="veiculo.anoModelo" class="shadow-sm rounded-0" type="date" name="anoModelo" required>
+                    <div class="invalid-feedback">Informe o ano modelo</div>
+                  </div>
+                  <div class="form-group col col-md-5">
+                    <label for="nome">Valor</label>
+                    <input [ngClass]="((!veiculo.valor|| (veiculo.valor && ngForm.submitted)) && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'"
+                    [(ngModel)]="veiculo.valor" class="shadow-sm rounded-0" minlength="3" name="valor" required>
+                    <div class="invalid-feedback">Informe o valor</div>
+                  </div>
+                  <div class="col col-md-1"></div>
+                  <div class="col col-md-1"></div>
+                  <div class="form-group col-md-5 pt-4">
+                    <button type="submit" class="form-control btn btn-warning rounded-0 shadow-sm" (click)="voltar()">Voltar</button>
+                  </div>
+                  <div class="form-group col-md-5 pt-4">
+                    <button type="submit" class="form-control btn btn-primary rounded-0 shadow-sm" (click)="salvar(ngForm)">Cadastrar</button>
+                  </div>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

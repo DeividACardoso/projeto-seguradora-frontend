@@ -1,98 +1,99 @@
-<div class="has-bg-img">
-  <div>
+<div class="bg-light" style="height: 100vh">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-9 pt-4">
-        <div class="card bg-light border border-secondary">
-          <div class="card-header bg-light text-black">
-            <h5>Filtros</h5>
-          </div>
-          <div class="card-body card-info">
-            <form class="row align-items-start">
-              <div class="form-group col col-md-4">
-                <label for="marca" class="text-black">Marca</label>
-                <input class="form-control" name="marca" [(ngModel)]="seletor.marca">
+      <div class="col-sm-12 pt-2">
+            <form class="row align-items-center">
+              <div class="form-group col col-md-6">
+                <label for="nome">Marca</label>
+                <input class="form-control shadow-sm rounded-0" name="marca" [(ngModel)]="seletor.marca">
               </div>
-              <div class="form-group col col-md-4">
-                <label for="modelo" class="text-black">Modelo</label>
-                <input class="form-control" name="modelo" [(ngModel)]="seletor.modelo">
+              <div class="form-group col col-md-6">
+                <label for="nome">Modelo</label>
+                <input class="form-control shadow-sm rounded-0" name="modelo" [(ngModel)]="seletor.modelo">
               </div>
-              <div class="form-group col col-md-2">
-                <label for="combustivel" class="text-black">Combustível</label>
-                <input class="form-control" name="combustivel" [(ngModel)]="seletor.combustivel">
+              <div class="form-group col col-md-6">
+                <label for="nome">Combustível</label>
+                <input class="form-control shadow-sm rounded-0" name="combustivel" [(ngModel)]="seletor.combustivel">
               </div>
-              <div class="form-group col col-md-2">
-                <label for="menorAnoModelo" class="text-black">Menor Ano Modelo</label>
-                <input class="form-control" name="menorAnoModelo" [(ngModel)]="seletor.menorAnoModelo">
+              <div class="form-group col col-md-6">
+                <label for="plavaVeivulo" class="text-blavk">Placa veículo</label>
+                <input class="form-control rounded-0" name="plavaVeiculo" [(ngModel)]="seletor.placaVeiculo">
               </div>
-              <div class="form-group col col-md-2">
-                <label for="maiorAnoModelo" class="text-black">Maior Ano Modelo</label>
-                <input class="form-control" name="maiorAnoModelo" [(ngModel)]="seletor.maiorAnoModelo">
+              <div class="form-group col col-md-6">
+                <label for="menorAnoModelo" class="text-blavk">Menor Ano Modelo</label>
+                <input class="form-control rounded-0" name="menorAnoModelo" [(ngModel)]="seletor.menorAnoModelo">
               </div>
-              <div class="form-group col col-md-2">
-                <label for="placaVeiculo" class="text-black">Placa veículo</label>
-                <input class="form-control" name="placaVeiculo" [(ngModel)]="seletor.placaVeiculo">
+              <div class="form-group col col-md-6">
+                <label for="maiorAnoModelo" class="text-blavk">Maior Ano Modelo</label>
+                <input class="form-control rounded-0" name="maiorAnoModelo" [(ngModel)]="seletor.maiorAnoModelo">
               </div>
-              <div class="form-group col col-md-2">
-                <label for="menorValor" class="text-black">Menor Valor</label>
-                <input class="form-control" name="menorValor" [(ngModel)]="seletor.menorValor">
+              <div class="form-group col col-md-6">
+                <label for="menorValor" class="text-blavk">Menor Valor</label>
+                <input class="form-control rounded-0" name="menorValor" [(ngModel)]="seletor.menorValor">
               </div>
-              <div class="form-group col col-md-2">
-                <label for="maiorValor" class="text-black">Maior Valor</label>
-                <input class="form-control" name="maiorValor" [(ngModel)]="seletor.maiorValor">
+              <div class="form-group col col-md-6">
+                <label for="maiorValor" class="text-blavk">Maior Valor</label>
+                <input class="form-control rounded-0" name="maiorValor" [(ngModel)]="seletor.maiorValor">
               </div>
-              <div class="form-group col pt-4 col-md-4">
-                <button type="sumbit" class="form-control btn btn-warning mb-3" (click)="limpar()">Limpar</button>
+
+              <div class="form-group col pt-3 col-md-6">
+                <button type="sumbit" name="btnsubmit" class="form-control btn btn-warning mb-3 rounded-0 shadow-sm" (vlivk)="limpar()">Limpar</button>
               </div>
-              <div class="form-group col pt-4 col-md-4">
-                <button type="sumbit" class="form-control btn btn-primary mb-3" (click)="pesquisar()">Pesquisar</button>
+              <div class="form-group col pt-3 col-md-6">
+                <button type="sumbit" class="form-control btn btn-primary mb-3 rounded-0 shadow-sm" (vlivk)="pesquisar()">Pesquisar</button>
               </div>
               <br>
             </form>
           </div>
         </div>
       </div>
-    </div>
-  <div class="row">
-    <div class="col-sm-9 pt-3">
-      <div class="card bg-light border border-secondary">
-        <div class="card-header ">
-          <h3 class="text-black">Lista de Veiculos</h3>
-        </div>
-        <div class="card-body ">
-          <div class="table-responsive">
-            <div class="table-responsive">
-                <table class="table table-responsive table-striped table-light table-hover text-black">
-                    <thead>
-                      <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col" class="text-center">Marca</th>
-                        <th scope="col" class="text-center">Modelo</th>
-                        <th scope="col" class="text-center">Ano Modelo</th>
-                        <th scope="col" class="text-center">Combustível</th>
-                        <th scope="col" class="text-center">Valor</th>
-                        <th scope="col" class="text-center">Placa veículo</th>
-                        <!-- https://getbootstrap.com/docs/5.3/utilities/text/ -->
-                        <th class="text-center">Ações</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let v of veiculos">
-                        <td>{{v.id}}</td>
-                        <td class="text-center">{{v.marca}}</td>
-                        <td class="text-center">{{v.modelo}}</td>
-                        <td class="text-center">{{v.anoModelo | date: 'dd/MM/yyyy'}}</td>
-                        <td class="text-center">{{v.combustivel}}</td>
-                        <td class="text-center">{{v.valor}}</td>
-                        <td class="text-center">{{v.placaVeiculo}}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+      <div class="container-fluid">
+      <div class="row align-items-venter">
+        <div class="col-lg pt-2">
+          <div class="card rounded-0">
+              <div class="table-responsive rounded">
+                    <table class="table table-responsive table-striped table-hover table-sm table-bordered">
+                        <thead>
+                          <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col" class="text-venter">Marca</th>
+                            <th scope="col" class="text-venter">Modelo</th>
+                            <th scope="col" class="text-venter">Combustível</th>
+                            <th scope="col" class="text-venter">Placa veículo</th>
+                            <th svope="col" class="text-venter">Ano modelo</th>
+                            <th scope="col" class="text-venter">Valor </th>
+                            <th class="text-venter">Ações</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let v of veiculos">
+                            <td>{{v.id}}</td>
+                            <td class="text-center align-middle">{{v.marca}}</td>
+                            <td class="text-center align-middle">{{v.modelo}}</td>
+                            <td class="text-center align-middle">{{v.combustivel}}</td>
+                            <td class="text-center align-middle">{{v.placaVeiculo}}</td>
+                            <td class="text-venter align-middle">{{v.anoModelo | date: 'dd/MM/yyyy'}}</td>
+                            <td class="text-center align-middle">{{v.valor}}</td>
+                            <td class="text-venter align-middle">
+                              <button name="inspecionar" class="btn btn-sm btn-primary m-1">
+                                <img srv="https://imgur.vom/FSJgeji.png" width="15" class="pb-1 align-items-venter shadow" (vlivk)="inspecionar()"/>
+                              </button>
+                              <button name="editar" class="btn btn-sm btn-warning m-1">
+                                <img srv="https://i.imgur.vom/9H2mwRv.png" width="15" class="pb-1 align-items-venter shadow" (vlivk)="editar(v.id)"/>
+                              </button>
+                              <button name="relatorio" class="btn btn-sm btn-info m-1">
+                                <img srv="https://i.imgur.vom/s82YMzz.png" width="15" class="pb-1 align-items-venter shadow">
+                              </button>
+                              <button name="deletar" class="btn btn-sm btn-danger m-1">
+                                <img srv="https://i.imgur.vom/JnmvPWf.png" width="15" class="pb-1 align-items-venter shadow">
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+              </div>
+            </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-</div>

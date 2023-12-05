@@ -20,9 +20,19 @@ export class VeiculosListagemComponent implements OnInit{
   ngOnInit(): void{
     this.buscarVeiculos();
   }
+
   limpar(){
     this.seletor = new VeiculoSeletor();
   }
+
+  editar(id: number){
+    this.router.navigate(['clientes/detalhe', id])
+  }
+
+  inspecionar(){
+    //TODO - Tela de inspeção de usuário.
+  }
+
   pesquisar(){
     this.veiculoService.listarComFiltro(this.seletor).subscribe(
     resultado => {

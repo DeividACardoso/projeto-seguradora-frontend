@@ -52,4 +52,10 @@ export class ClientesListagemComponent implements OnInit{
       }
     )
   }
+  removeMask(value: string): string {
+    // Remove the mask logic here
+    // For example, let's say the mask added dashes to a phone number
+    return value.replace(/-/g, '');
+  }
 }
+

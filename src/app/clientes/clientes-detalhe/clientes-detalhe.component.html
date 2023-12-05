@@ -20,7 +20,7 @@
                       <label for="cpf">CPF</label>
                       <input [ngClass]="((!cliente.cpf || (cliente.cpf && cliente.cpf.length != 11)) && ngForm.submitted)
                       ? 'form-control is-invalid' : 'form-control'"
-                      [(ngModel)]="cliente.cpf" class="shadow-sm rounded-0" minlength="11" name="cpf" required>
+                      class="shadow-sm rounded-0" [ngModel]="cliente.cpf | numberMask: 'cpf'" (ngModelChange)="cliente.cpf=$event" placeholder="xxx.xxx.xxx-xx" maxlength="14" name="cpf" required appOnlyNumbers>
                       <div class="invalid-feedback">Informe um CPF válido</div>
                     </div>
                     <div class="col col-md-1"></div>
@@ -29,7 +29,7 @@
                       <label for="telefone">Telefone (com DDD)</label>
                       <input [ngClass]="((!cliente.telefone || (cliente.telefone && cliente.telefone.length != 11)) && ngForm.submitted)
                       ? 'form-control is-invalid' : 'form-control'"
-                      [(ngModel)]="cliente.telefone" class="shadow-sm rounded-0" minlength="11" name="telefone" required>
+                      [ngModel]="cliente.telefone | phone" (ngModelChange)="cliente.telefone=$event" placeholder="(xx) #xxxx-xxxx" class="shadow-sm rounded-0" maxlength="19" name="telefone" required appOnlyNumbers>
                       <div class="invalid-feedback">Insira um telefone válido</div>
                     </div>
                     <div class="form-group col col-md-5">

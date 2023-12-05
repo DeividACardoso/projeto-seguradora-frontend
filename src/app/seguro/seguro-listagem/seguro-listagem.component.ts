@@ -10,6 +10,12 @@ import { SeguroSeletor } from 'src/app/shared/model/seletor/seguro.seletor';
   styleUrls: ['./seguro-listagem.component.scss']
 })
 export class SeguroListagemComponent implements OnInit{
+editar(arg0: number) {
+throw new Error('Method not implemented.');
+}
+inspecionar() {
+throw new Error('Method not implemented.');
+}
 
   public seguros: Array<Seguro> = new Array();
   public seletor: SeguroSeletor = new SeguroSeletor();

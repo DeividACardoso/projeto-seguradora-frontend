@@ -5,7 +5,8 @@ import { ClientesDetalheComponent } from './clientes-detalhe/clientes-detalhe.co
 
 const routes: Routes = [
   {path: 'lista', component: ClientesListagemComponent},
-  {path: 'detalhe', component: ClientesDetalheComponent}
+  {path: 'detalhe', component: ClientesDetalheComponent},
+  {path: 'detalhe/:id', component: ClientesDetalheComponent}
 ];
 
 @NgModule({

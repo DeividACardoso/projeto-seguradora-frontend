@@ -33,6 +33,6 @@ export class SeguroService{
   }
 
   excluir(id: number): Observable<Seguro>{
-    return this.httpClient.delete<Seguro>(this.API+'/delete-id'+id);
+    return this.httpClient.delete<Seguro>(this.API+'/delete-id/'+id);
   }
 }

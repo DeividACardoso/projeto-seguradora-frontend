@@ -33,6 +33,6 @@ export class VeiculoService{
   }
 
   excluir(id: number): Observable<Veiculo>{
-    return this.httpClient.delete<Veiculo>(this.API+'/delete-id'+id);
+    return this.httpClient.delete<Veiculo>(this.API+'/delete-id/'+id);
   }
 }

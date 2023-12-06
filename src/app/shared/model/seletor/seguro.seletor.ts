@@ -1,5 +1,5 @@
 export class SeguroSeletor{
-  nomeCliente: string;
+  cpfCliente: string;
   placaVeiculo: string;
   numeroProposta: string;
   dtInicioComecoVigencia: Date;

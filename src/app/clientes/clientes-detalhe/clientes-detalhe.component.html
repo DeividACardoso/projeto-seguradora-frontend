@@ -2,83 +2,78 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-12 pt-2">
-            <!-- <div class="card border border-dark">
-              <div class="card-header bg-primary text-white">
-                <h5>Cadastro</h5>
-              </div> -->
+            <div class="col-sm-12 text-center">
+              <h3>Cadastro de Clientes</h3>
+            </div>
               <div class="card-body card-info">
                 <form #ngForm="ngForm">
                   <div class="row align-items-start">
-                    <div class="col col-md-1"></div>
-                    <div class="form-group col col-md-5">
+                    <div class="form-group col col-md-6">
                       <label for="nome">Nome</label>
                       <input [ngClass]="((!cliente.nome || (cliente.nome && cliente.nome.length < 3)) && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'"
                       [(ngModel)]="cliente.nome" class="shadow-sm rounded-0" minlength="3" name="nome" required>
                       <div class="invalid-feedback">Informe um nome com no mínimo 3 caracteres.</div>
                     </div>
-                    <div class="form-group col col-md-5">
+                    <div class="form-group col col-md-6">
                       <label for="cpf">CPF</label>
-                      <input [ngClass]="((!cliente.cpf || (cliente.cpf && cliente.cpf.length != 11)) && ngForm.submitted)
+                      <input [ngClass]="((!cliente.cpf || (cliente.cpf && cliente.cpf.length != 14)) && ngForm.submitted)
                       ? 'form-control is-invalid' : 'form-control'"
                       class="shadow-sm rounded-0" [ngModel]="cliente.cpf | numberMask: 'cpf'" (ngModelChange)="cliente.cpf=$event" placeholder="xxx.xxx.xxx-xx" maxlength="14" name="cpf" required appOnlyNumbers>
                       <div class="invalid-feedback">Informe um CPF válido</div>
                     </div>
-                    <div class="col col-md-1"></div>
-                    <div class="col col-md-1"></div>
-                    <div class="form-group col col-md-5">
+                    <div class="form-group col col-md-6">
                       <label for="telefone">Telefone (com DDD)</label>
-                      <input [ngClass]="((!cliente.telefone || (cliente.telefone && cliente.telefone.length != 11)) && ngForm.submitted)
+                      <input [ngClass]="((!cliente.telefone || (cliente.telefone && cliente.telefone.length != 15) || (cliente.telefone && cliente.telefone.length != 14)) && ngForm.submitted)
                       ? 'form-control is-invalid' : 'form-control'"
                       [ngModel]="cliente.telefone | phone" (ngModelChange)="cliente.telefone=$event" placeholder="(xx) #xxxx-xxxx" class="shadow-sm rounded-0" maxlength="19" name="telefone" required appOnlyNumbers>
                       <div class="invalid-feedback">Insira um telefone válido</div>
                     </div>
-                    <div class="form-group col col-md-5">
+                    <div class="form-group col col-md-6">
                       <label for="dataNascimento">Data de Nascimento</label>
-                      <input class="form-control shadow-sm rounded-0" type="date" name="dataNascimento"[(ngModel)]="cliente.dataNascimento" required>
-                        <div class="invalid-feedback">Campo obrigatório</div>
+                      <input [ngClass]="(!cliente.dataNascimento && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'"
+                      [(ngModel)]="cliente.dataNascimento" class="shadow-sm rounded-0" type="date" name="dataNascimento" required>
+                        <div class="invalid-feedback">Insira uma data de nascimento válida.</div>
                       </div>
-                      <div class="col col-md-1"></div>
-                      <div class="col col-md-1"></div>
-                      <div class="form-group col col-md-5">
+                      <div class="form-group col col-md-6">
                         <label for="cep">CEP</label>
-                        <input class="form-control shadow-sm rounded-0" [(ngModel)]="cliente.endereco.cep" name="cep" required>
-                        <div class="invalid-feedback">Campo obrigatório</div>
+                        <input [ngClass]="(cliente.endereco.cep && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'" 
+                        [(ngModel)]="cliente.endereco.cep" class="shadow-sm rounded-0" name="cep" required appOnlyNumbers>
+                        <div class="invalid-feedback">Insira um cep válido</div>
                       </div>
-                      <div class="form-group col col-md-5">
+                      <div class="form-group col col-md-6">
                         <label for="numeroCasa">Número da Casa</label>
-                        <input class="form-control shadow-sm rounded-0" [(ngModel)]="cliente.endereco.numero" name="numeroCasa" required>
-                        <div class="invalid-feedback">Campo obrigatório</div>
+                        <input [ngClass]="(cliente.endereco.numero && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'" 
+                        [(ngModel)]="cliente.endereco.numero" class="shadow-sm rounded-0" name="numeroCasa" required appOnlyNumbers>
+                        <div class="invalid-feedback">Insira um número de casa válido</div>
                       </div>
-                      <div class="col col-md-1"></div>
-                      <div class="col col-md-1"></div>
-                      <div class="form-group col col-md-5">
+                      <div class="form-group col col-md-6">
                         <label for="rua">Rua</label>
-                        <input class="form-control shadow-sm rounded-0" [(ngModel)]="cliente.endereco.rua" name="rua" required>
-                        <div class="invalid-feedback">Campo obrigatório</div>
+                        <input [ngClass]="(cliente.endereco.rua && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'" 
+                        [(ngModel)]="cliente.endereco.rua" class="shadow-sm rounded-0" name="rua" required>
+                        <div class="invalid-feedback">Insira uma rua válida</div>
                       </div>
-                      <div class="form-group col col-md-5">
+                      <div class="form-group col col-md-6">
                         <label for="bairro">Bairro</label>
-                        <input class="form-control shadow-sm rounded-0" [(ngModel)]="cliente.endereco.bairro" name="bairro" required>
-                        <div class="invalid-feedback">Campo obrigatório</div>
+                        <input [ngClass]="(cliente.endereco.bairro && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'" 
+                        [(ngModel)]="cliente.endereco.bairro" class="shadow-sm rounded-0" name="bairro" required>
+                        <div class="invalid-feedback">Insira um Bairro válido</div>
                       </div>
-                      <div class="col col-md-1"></div>
-                      <div class="col col-md-1"></div>
-                      <div class="form-group col col-md-5">
+                      <div class="form-group col col-md-6">
                         <label for="cidade">Cidade</label>
-                        <input class="form-control shadow-sm rounded-0" [(ngModel)]="cliente.endereco.cidade" name="cidade" required>
-                        <div class="invalid-feedback">Campo obrigatório</div>
+                        <input [ngClass]="(cliente.endereco.cidade && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'" 
+                        [(ngModel)]="cliente.endereco.cidade" class="shadow-sm rounded-0" name="cidade" required>
+                        <div class="invalid-feedback">Insira uma cidade válida</div>
                       </div>
-                      <div class="form-group col col-md-5">
+                      <div class="form-group col col-md-6">
                         <label for="estado">Estado</label>
-                        <input class="form-control shadow-sm rounded-0" [(ngModel)]="cliente.endereco.estado" name="estado" required>
-                        <div class="invalid-feedback">Campo obrigatório</div>
+                        <input [ngClass]="(cliente.endereco.estado && ngForm.submitted)  ? 'form-control is-invalid' : 'form-control'" 
+                        [(ngModel)]="cliente.endereco.estado" class="shadow-sm rounded-0" name="estado" required>
+                        <div class="invalid-feedback">Insira um estado válido</div>
                       </div>
-                      <div class="col col-md-1"></div>
-                      <div class="col col-md-1"></div>
-                      <div class="form-group col-md-5 pt-4">
+                      <div class="form-group col-md-6 pt-4">
                         <button type="submit" class="form-control btn btn-warning rounded-0 shadow-sm" (click)="voltar()">Voltar</button>
                       </div>
-                      <div class="form-group col-md-5 pt-4">
+                      <div class="form-group col-md-6 pt-4">
                         <button type="submit" class="form-control btn btn-primary rounded-0 shadow-sm" (click)="salvar(ngForm)">Cadastrar</button>
                       </div>
                   </div>

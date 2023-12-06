@@ -2,18 +2,17 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12 pt-2">
+        <div class="col-sm-12 text-center">
+          <h3>Listagem de Seguros</h3>
+        </div>
         <form class="row align-items-center">
-          <div class="form-group col col-md-4">
-            <label for="nomeCliente">Nome Cliente</label>
-            <input class="form-control shadow-sm rounded-0" name="nomeCliente" [(ngModel)]="seletor.nomeCliente">
+          <div class="form-group col col-md-6">
+            <label for="nomeCliente">CPF do Cliente</label>
+            <input class="form-control shadow-sm rounded-0" name="nomeCliente" [(ngModel)]="seletor.cpfCliente">
           </div>
-          <div class="form-group col col-md-4">
+          <div class="form-group col col-md-6">
             <label for="placaVeiculo">Placa Veículo</label>
             <input class="form-control shadow-sm rounded-0" name="placaVeiculo" [(ngModel)]="seletor.placaVeiculo">
-          </div>
-          <div class="form-group col col-md-4">
-            <label for="numeroProposta">Número Proposta</label>
-            <input class="form-control shadow-sm rounded-0" name="numeroProposta" [(ngModel)]="seletor.numeroProposta">
           </div>
           <div class="form-group col col-md-6">
             <label for="dtInicioComecoVigencia">Data Inicial de Inicio de Vigência</label>
@@ -51,10 +50,13 @@
             <label for="carroReserva">Carro Reserva</label>
             <input class="form-control shadow-sm rounded-0" name="carroReserva" [(ngModel)]="seletor.carroReserva">
           </div>
-          <div class="form-group col pt-3 col-md-6">
+          <div class="form-group col pt-3 col-md-2">
+            <button type="sumbit" name="btnrelatorio" class="form-control btn btn-success mb-3 rounded-0 shadow-sm" (click)="exportExcel()">Relatório</button>
+          </div>
+          <div class="form-group col pt-3 col-md-5">
             <button type="sumbit" name="btnsubmit" class="form-control btn btn-warning mb-3 rounded-0 shadow-sm" (click)="limpar()">Limpar</button>
           </div>
-          <div class="form-group col pt-3 col-md-6">
+          <div class="form-group col pt-3 col-md-5">
             <button type="sumbit" class="form-control btn btn-primary mb-3 rounded-0 shadow-sm" (click)="pesquisar()">Pesquisar</button>
           </div>
         </form>
@@ -65,13 +67,12 @@
     <div class="row align-items-center">
       <div class="col-md pt-2">
         <div class="table-responsive rounded-0 border border-light">
-          <table class="table table-responsive table-striped table-hover table-sm table-bordered">
+          <table id="tabelaSeguros" class="table table-responsive table-striped table-hover table-sm table-bordered">
             <thead>
               <tr>
                 <th scope="col" class="text-center">Nome Cliente</th>
                 <th scope="col" class="text-center">Placa Veículo</th>
-                <th scope="col" class="text-center">Número Proposta</th>
-                <th scope="col" class="text-center">Data Início e Fim de Vigência</th>
+                <th scope="col" class="text-center">Data Início - Fim de Vigência</th>
                 <th scope="col" class="text-center">RCF Danos Materiais</th>
                 <th scope="col" class="text-center">RCF Danos Corporais</th>
                 <th scope="col" class="text-center">Franquia</th>
@@ -84,7 +85,6 @@
               <tr *ngFor="let s of seguros">
                 <td class="text-center align-middle">{{s.cliente.nome}}</td>
                 <td class="text-center align-middle">{{s.veiculo.placaVeiculo}}</td>
-                <td class="text-center align-middle">{{s.numeroProposta}}</td>
                 <td class="text-center align-middle">{{s.dtInicioVigencia | date: 'dd/MM/yyyy'}} - {{s.dtFimVigencia | date: 'dd/MM/yyyy'}}</td>
                 <td class="text-center align-middle">{{s.rcfDanosMateriais}}</td>
                 <td class="text-center align-middle">{{s.rcfDanosCorporais}}</td>
@@ -92,17 +92,14 @@
                 <td class="text-center align-middle">{{s.assistencia}}</td>
                 <td class="text-center align-middle">{{s.carroReserva}}</td>
                 <td class="text-center align-middle">
-                  <button name="inspecionar" class="btn btn-sm btn-primary m-1">
-                    <img src="https://imgur.com/FSJgeji.png" width="15" class="pb-1 align-items-center shadow" (click)="inspecionar()"/>
+                  <button name="inspecionar" class="btn btn-sm btn-primary shadow-sm" data-toggle="tooltip" data-placement="top" title="Inspecionar" (click)="inspecionar()" disabled>
+                    <img src="https://imgur.com/FSJgeji.png" width="15" class="pb-1 align-items-center"/>
                   </button>
-                  <button name="editar" class="btn btn-sm btn-warning m-1">
-                    <img src="https://i.imgur.com/9H2mwRv.png" width="15" class="pb-1 align-items-center shadow" (click)="editar(s.id)"/>
+                  <button name="editar" class="btn btn-sm btn-warning m-1 shadow-sm" data-toggle="tooltip" data-placement="top" title="Editar" (click)="editar(s.id)">
+                    <img src="https://i.imgur.com/9H2mwRv.png" width="15" class="pb-1 align-items-center"/>
                   </button>
-                  <button name="relatorio" class="btn btn-sm btn-info m-1">
-                    <img src="https://i.imgur.com/s82YMzz.png" width="15" class="pb-1 align-items-center shadow">
-                  </button>
-                  <button name="deletar" class="btn btn-sm btn-danger m-1">
-                    <img src="https://i.imgur.com/JnmcPWf.png" width="15" class="pb-1 align-items-center shadow">
+                  <button name="deletar" class="btn btn-sm btn-danger shadow-sm" data-toggle="tooltip" data-placement="top" title="Excluir" (click)="excluir(s.id)">
+                    <img src="https://i.imgur.com/JnmcPWf.png" width="15" class="pb-1 align-items-center">
                   </button>
                 </td>
               </tr>

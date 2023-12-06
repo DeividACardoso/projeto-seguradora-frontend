@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class SeguroDetalheComponent implements OnInit{
   seguro:Seguro = new Seguro();
-  public idSeguro: number
+  public idSeguro: number;
 
   @ViewChild('ngForm')
   public ngForm: NgForm;
@@ -29,7 +29,6 @@ export class SeguroDetalheComponent implements OnInit{
         this.buscarSeguro();
       }
     });
-
   }
   voltar(){
     this.router.navigate(['/seguros/lista'])

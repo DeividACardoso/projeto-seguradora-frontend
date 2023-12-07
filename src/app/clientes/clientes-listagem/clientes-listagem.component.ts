@@ -41,7 +41,7 @@ export class ClientesListagemComponent implements OnInit{
   }
 
   inspecionar(){
-    //TODO - Tela de inspeção de usuário.
+    throw new Error('Method not implemented.');
   }
 
   buscarClientes() {

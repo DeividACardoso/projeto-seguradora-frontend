@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Seguro } from 'src/app/shared/model/seguro'
 import { Observable } from "rxjs";
 import { SeguroSeletor } from 'src/app/shared/model/seletor/seguro.seletor'
+import { Cliente } from "../model/cliente";
 
 @Injectable({
   providedIn :'root'
@@ -12,6 +13,9 @@ export class SeguroService{
 
   constructor(private httpClient: HttpClient) {}
 
+  getListaClientes(): Observable<Array<Cliente>> {
+    return this.httpClient.get<Array<Cliente>>('http://localhost:8080/api/clientes/todos');;
+  }
   listarTodos(): Observable<Array<Seguro>>{
     return this.httpClient.get<Array<Seguro>>(this.API+'/todos');
   }

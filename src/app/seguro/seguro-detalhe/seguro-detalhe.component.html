@@ -10,10 +10,14 @@
             <div class="row align-items-start">
               <div class="form-group col col-md-6">
                 <label for="nome">Cliente</label>
-                <input [ngClass]="(!seguro.cliente && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'"
-                        [(ngModel)]="seguro.cliente" class="shadow-sm rounded-0" minlength="3" name="cliente" required>
+                <select [ngClass]="(!seguro.cliente && ngForm.submitted) ? 'form-select is-invalid' : 'form-select'"
+                        [(ngModel)]="seguro.cliente" name="cliente" required>
+                    <option value="" disabled selected>Selecione um cliente</option>
+                    <!-- Itera sobre a lista de nomes dos clientes e cria uma opção para cada um -->
+                    <option *ngFor="let nomeCliente of listaClientes" [value]="nomeCliente">{{ nomeCliente }}</option>
+                </select>
                 <div class="invalid-feedback">Informe o nome do cliente</div>
-              </div>
+            </div>
               <div class="form-group col 6">
                 <label for="nome">Veículo</label>
                 <input [ngClass]="(!seguro.veiculo && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'"

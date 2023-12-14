@@ -15,8 +15,8 @@ import { Cliente } from 'src/app/shared/model/cliente';
   styleUrls: ['./seguro-detalhe.component.scss']
 })
 export class SeguroDetalheComponent implements OnInit{
-  seguro: Seguro = new Seguro();
-  seguros: Array<Seguro> = new Array();
+  public seguro: Seguro = new Seguro();
+  public seguros: Array<Seguro> = new Array();
   public idSeguro: number;
   public listaClientes: Array<Cliente> = new Array();
   public listaVeiculos: Array<Veiculo> = new Array();
@@ -93,6 +93,11 @@ salvar(form: NgForm){
     this.inserirSeguro();
   }
 }
+
+public compareById(r1: any, r2: any): boolean {
+  return r1 && r2 ? r1.id === r2.id : r1 === r2;
+}
+
 inserirSeguro() {
     this.seguroService.salvar(this.seguro).subscribe(
     sucesso => {

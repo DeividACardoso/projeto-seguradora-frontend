@@ -24,7 +24,7 @@ export class VeiculosDetalheComponent {
     ngOnInit(): void {
       this.route.params.subscribe(params => {
         this.idVeiculo = params['id'];
-  
+
         if(this.idVeiculo){
           this.buscarVeiculo();
         }
@@ -51,7 +51,7 @@ export class VeiculosDetalheComponent {
     if(form.invalid){
       Swal.fire("Erro", "Formulário inválido", 'error');
     }
-  
+
     if(this.idVeiculo){
       this.atualizar();
     } else {
@@ -66,7 +66,7 @@ export class VeiculosDetalheComponent {
         this.veiculo = new Veiculo();
       },
       erro => {
-        Swal.fire("Erro", "Não foi possivel salvar o veículo: " + erro, 'error');
+        Swal.fire("Erro", "Não foi possivel salvar o veículo: " + erro.error.message, 'error');
       }
     )
   }

@@ -9,21 +9,23 @@
           <form #ngForm="ngForm">
             <div class="row align-items-start">
               <div class="form-group col col-md-6">
-                <label for="nome">Cliente</label>
+                <label for="cliente">Cliente</label>
                 <select [ngClass]="(!seguro.cliente && ngForm.submitted) ? 'form-select is-invalid' : 'form-select'"
-                        [(ngModel)]="seguro.cliente" name="cliente" required>
-                    <option value="" disabled selected>Selecione um cliente</option>
-                    <!-- Itera sobre a lista de nomes dos clientes e cria uma opção para cada um -->
-                    <option *ngFor="let nomeCliente of listaClientes" [value]="nomeCliente">{{ nomeCliente }}</option>
+                        [(ngModel)]="seguro.cliente" name="cliente" required (ngModelChange)="buscarVeiculosDoCliente()">
+                  <option value="" disabled selected>Selecione um cliente</option>
+                  <option *ngFor="let cliente of listaClientes" [value]="cliente"> Nome: {{ cliente.nome }} - CPF: {{ cliente.cpf | numberMask: 'cpf' }}</option>
                 </select>
-                <div class="invalid-feedback">Informe o nome do cliente</div>
+                <div class="invalid-feedback">Informe o cliente</div>
             </div>
-              <div class="form-group col 6">
-                <label for="nome">Veículo</label>
-                <input [ngClass]="(!seguro.veiculo && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'"
-                        [(ngModel)]="seguro.veiculo" class="shadow-sm rounded-0" minlength="3" name="veiculo" required>
-                <div class="invalid-feedback">Informe o veículo</div>
-              </div>
+            <div class="form-group col col-md-6">
+              <label for="veiculo">Veículo</label>
+              <select [ngClass]="(!seguro.veiculo && ngForm.submitted) ? 'form-select is-invalid' : 'form-select'"
+                      [(ngModel)]="seguro.veiculo" name="veiculo" required>
+                <option value="" disabled selected>Selecione um veículo</option>
+                <option *ngFor="let veiculo of listaVeiculos" [value]="veiculo">{{veiculo.placaVeiculo}} - {{veiculo.marca}}</option>
+              </select>
+              <div class="invalid-feedback">Informe o veículo</div>
+            </div>
               <div class="form-group col col-md-6">
                 <label for="nome">Número da proposta</label>
                 <input [ngClass]="((!seguro.numeroProposta || (seguro.numeroProposta && seguro.numeroProposta.length < 3)) && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'"

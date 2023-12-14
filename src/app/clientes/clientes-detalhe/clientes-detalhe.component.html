@@ -36,37 +36,37 @@
                       </div>
                       <div class="form-group col col-md-6">
                         <label for="cep">CEP</label>
-                        <input [ngClass]="(cliente.endereco.cep && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'" 
+                        <input [ngClass]="(!cliente.endereco.cep && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'"
                         [(ngModel)]="cliente.endereco.cep" class="shadow-sm rounded-0" name="cep" required appOnlyNumbers>
                         <div class="invalid-feedback">Insira um cep válido</div>
                       </div>
                       <div class="form-group col col-md-6">
                         <label for="numeroCasa">Número da Casa</label>
-                        <input [ngClass]="(cliente.endereco.numero && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'" 
+                        <input [ngClass]="(!cliente.endereco.numero && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'"
                         [(ngModel)]="cliente.endereco.numero" class="shadow-sm rounded-0" name="numeroCasa" required appOnlyNumbers>
                         <div class="invalid-feedback">Insira um número de casa válido</div>
                       </div>
                       <div class="form-group col col-md-6">
                         <label for="rua">Rua</label>
-                        <input [ngClass]="(cliente.endereco.rua && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'" 
+                        <input [ngClass]="(!cliente.endereco.rua && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'"
                         [(ngModel)]="cliente.endereco.rua" class="shadow-sm rounded-0" name="rua" required>
                         <div class="invalid-feedback">Insira uma rua válida</div>
                       </div>
                       <div class="form-group col col-md-6">
                         <label for="bairro">Bairro</label>
-                        <input [ngClass]="(cliente.endereco.bairro && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'" 
+                        <input [ngClass]="(!cliente.endereco.bairro && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'"
                         [(ngModel)]="cliente.endereco.bairro" class="shadow-sm rounded-0" name="bairro" required>
                         <div class="invalid-feedback">Insira um Bairro válido</div>
                       </div>
                       <div class="form-group col col-md-6">
                         <label for="cidade">Cidade</label>
-                        <input [ngClass]="(cliente.endereco.cidade && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'" 
+                        <input [ngClass]="(!cliente.endereco.cidade && ngForm.submitted) ? 'form-control is-invalid' : 'form-control'"
                         [(ngModel)]="cliente.endereco.cidade" class="shadow-sm rounded-0" name="cidade" required>
                         <div class="invalid-feedback">Insira uma cidade válida</div>
                       </div>
                       <div class="form-group col col-md-6">
                         <label for="estado">Estado</label>
-                        <input [ngClass]="(cliente.endereco.estado && ngForm.submitted)  ? 'form-control is-invalid' : 'form-control'" 
+                        <input [ngClass]="(!cliente.endereco.estado && ngForm.submitted)  ? 'form-control is-invalid' : 'form-control'"
                         [(ngModel)]="cliente.endereco.estado" class="shadow-sm rounded-0" name="estado" required>
                         <div class="invalid-feedback">Insira um estado válido</div>
                       </div>

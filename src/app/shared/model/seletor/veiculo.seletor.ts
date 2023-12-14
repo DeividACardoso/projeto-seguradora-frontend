@@ -1,4 +1,5 @@
 export class VeiculoSeletor{
+  idCliente: number;
   marca: string;
   modelo: string;
   placaVeiculo: string;

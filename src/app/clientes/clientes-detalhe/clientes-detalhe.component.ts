@@ -57,11 +57,10 @@ buscarCliente() {
   )
 }
 
-public salvar(form: NgForm){
+salvar(form: NgForm){
   if(form.invalid){
     Swal.fire("Erro", "Formulário inválido", 'error');
   }
-
   if(this.idCliente){
     this.atualizar();
   } else {
@@ -75,7 +74,7 @@ inserirCliente() {
       this.cliente = new Cliente();
     },
     erro => {
-      Swal.fire("Erro", "Não foi possivel salvar o cliente: " + erro, 'error');
+      Swal.fire("Erro", "Não foi possivel salvar o cliente: " + erro.error.message, 'error');
     }
   )
 }

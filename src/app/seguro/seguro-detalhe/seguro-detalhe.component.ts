@@ -4,6 +4,9 @@ import { NgForm } from '@angular/forms';
 import { Seguro } from 'src/app/shared/model/seguro';
 import { SeguroService } from 'src/app/shared/service/seguro.service';
 import Swal from 'sweetalert2';
+import { Veiculo } from 'src/app/shared/model/veiculo';
+import { VeiculoService } from 'src/app/shared/service/veiculo.service';
+import { VeiculoSeletor } from 'src/app/shared/model/seletor/veiculo.seletor';
 import { Cliente } from 'src/app/shared/model/cliente';
 
 @Component({
@@ -12,15 +15,18 @@ import { Cliente } from 'src/app/shared/model/cliente';
   styleUrls: ['./seguro-detalhe.component.scss']
 })
 export class SeguroDetalheComponent implements OnInit{
-  seguro:Seguro = new Seguro();
+  seguro: Seguro = new Seguro();
+  seguros: Array<Seguro> = new Array();
   public idSeguro: number;
-  public listaClientes: Array<String> = new Array();
+  public listaClientes: Array<Cliente> = new Array();
+  public listaVeiculos: Array<Veiculo> = new Array();
 
   @ViewChild('ngForm')
   public ngForm: NgForm;
 
 
   constructor(private seguroService : SeguroService,
+              private veiculoService: VeiculoService,
               private router: Router,
               private route: ActivatedRoute) {}
 
@@ -36,6 +42,19 @@ export class SeguroDetalheComponent implements OnInit{
     });
   }
 
+  buscarVeiculosDoCliente(){
+    let veiculoSeletor: VeiculoSeletor = new VeiculoSeletor();
+    veiculoSeletor.idCliente = this.seguro.cliente.id;
+    this.veiculoService.listarComFiltro(veiculoSeletor).subscribe(
+      (veiculos) => {
+        this.listaVeiculos = veiculos; // Mantém a lista de objetos de cliente
+      },
+      (error) => {
+        console.error('Erro ao obter lista de veículos de um cliente', error);
+      }
+    );
+  }
+
   voltar(){
     this.router.navigate(['/seguros/lista'])
   }
@@ -43,13 +62,14 @@ export class SeguroDetalheComponent implements OnInit{
   carregarListaClientes() {
     this.seguroService.getListaClientes().subscribe(
       (clientes) => {
-        this.listaClientes = clientes.map(cliente => cliente.nome); // Mantém a lista de objetos de cliente
+        this.listaClientes = clientes; // Mantém a lista de objetos de cliente
       },
       (error) => {
         console.error('Erro ao obter lista de clientes', error);
       }
     );
   }
+
 
   buscarSeguro() {
     this.seguroService.pesquisarPorId(this.idSeguro).subscribe(
@@ -67,7 +87,6 @@ salvar(form: NgForm){
   if(form.invalid){
     Swal.fire("Erro", "Formulário inválido", 'error');
   }
-
   if(this.idSeguro){
     this.atualizar();
   } else {
@@ -75,13 +94,13 @@ salvar(form: NgForm){
   }
 }
 inserirSeguro() {
-  this.seguroService.salvar(this.seguro).subscribe(
+    this.seguroService.salvar(this.seguro).subscribe(
     sucesso => {
       Swal.fire("Sucesso", "Seguro salvo com sucesso", 'success');
       this.seguro = new Seguro();
     },
     erro => {
-      Swal.fire("Erro", "Não foi possivel salvar o seguro: " + erro, 'error');
+      Swal.fire("Erro", "Não foi possivel salvar o seguro: " + erro.error.message, 'error');
     }
   )
 }

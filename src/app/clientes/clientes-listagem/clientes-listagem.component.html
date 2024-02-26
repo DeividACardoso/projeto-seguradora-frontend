@@ -43,7 +43,7 @@
           <table id="tabelaClientes" class="table table-responsive table-striped table-hover table-sm table-bordered">
             <thead>
               <tr>
-                <th scope="col">ID</th>
+                <th scope="col" class="text-center">ID</th>
                 <th scope="col" class="text-center">Nome</th>
                 <th scope="col" class="text-center">CPF</th>
                 <th scope="col" class="text-center">Data de Nascimento</th>
@@ -52,7 +52,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let c of clientes">
-                <td>{{c.id}}</td>
+                <td class="text-center align-middle">{{c.id}}</td>
                 <td class="text-center align-middle">{{c.nome}}</td>
                 <td class="text-center align-middle">{{c.cpf | cpf}}</td>
                 <td class="text-center align-middle">{{c.dataNascimento | date: 'dd/MM/yyyy'}}</td>
